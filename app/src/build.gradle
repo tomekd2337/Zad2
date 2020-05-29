@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+group 'pl.jaz.ajzapp'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation 'javax:javaee-api:8.0'
+    testImplementation 'junit:junit:4.12'
+}
