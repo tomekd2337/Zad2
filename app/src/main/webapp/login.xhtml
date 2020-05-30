@@ -4,7 +4,10 @@
         "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
 <h:head>
     <h:outputStylesheet name="bootstrap.min.css" library="css" />
     <h:outputStylesheet name="main.css" library="css" />
@@ -23,7 +26,10 @@
             <h:inputText id="password" styleClass="form-control" a:placeholder="Password"
                          value="#{loginRequest.password}"/>
         </div>
-        <h:commandButton styleClass="btn btm-primary" value="Login" action="#{loginController.login(loginRequest)}"/>
+
+        <h:commandButton styleClass="btn btn-info" value="Login" action="#{loginController.login(loginRequest)}"/>
+        <h:link value="SignUp" outcome="register" />
+
     </h:form>
 </h:body>
 </html>
