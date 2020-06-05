@@ -1,6 +1,10 @@
 package pl.jaz.jazapp;
 
+import pl.jaz.jazapp.service.UserService;
+
+import javax.ejb.EJB;
 import javax.faces.application.ResourceHandler;
+import javax.faces.context.FacesContext;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -14,7 +18,7 @@ public class SecurityFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        if (isUserAuthenticated() || isSiteAllowed(req) || isResourceReq(req)) {
+        if (isSiteAllowed(req) || isResourceReq(req) || isUserAuthenticated(req)) {
             chain.doFilter(req, res);
         } else{
             res.sendRedirect(req.getContextPath()+ "/login.xhtml");
@@ -22,8 +26,9 @@ public class SecurityFilter extends HttpFilter {
 
     }
 
-    private boolean isUserAuthenticated() {
-        return false;
+    private boolean isUserAuthenticated(HttpServletRequest req) {
+        Object user = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        return user != null;
     }
 
     private boolean isResourceReq (HttpServletRequest req) {

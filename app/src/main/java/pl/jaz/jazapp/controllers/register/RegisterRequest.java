@@ -1,4 +1,4 @@
-package pl.jaz.jazapp.register;
+package pl.jaz.jazapp.controllers.register;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

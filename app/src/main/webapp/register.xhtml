@@ -4,7 +4,8 @@
         "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:x="http://xmlns.jcp.org/jsf/core"
 >
@@ -24,7 +25,7 @@
             <h:inputText id="username" styleClass="form-control" a:placeholder="Username"
                          value="#{registerRequest.userName}">
 
-            <f:validateLength maximum="2" minimum="5"/>
+            <f:validateLength maximum="5" minimum="2"/>
                 <f:validator validatorId="usernameValidator"/>
             </h:inputText>
             <h:messages errorClass="error-message" for="username"/>
@@ -33,6 +34,11 @@
         <div class="form-group">
             <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
                          value="#{registerRequest.password}"/>
+        </div>
+
+        <div class="form-group">
+            <h:inputSecret id="password1" styleClass="form-control" a:placeholder="Password"
+                           value="#{registerRequest.password}"/>
         </div>
 
         <h:commandButton styleClass="btn btm-primary" value="Signup" action="#{registerController.register(registerRequest)}"/>
